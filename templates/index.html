@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index_layout.css') }}">
+    <title>Test</title>
+</head>
+<body>
+
+    <div class="div_slidebar" >
+        <label id="menu_label" style="display: none;">
+            <div class="slide">
+                <div class="option_menu">
+                    <button class="close_menu_button"  onclick="hide_menu()">X</button>
+                    <h1 class="menu_title">MENU</h1>
+                </div>
+                <ul>
+                    <li><a href="">Productos</a></li>
+                    <li><a href="">Ofertas</a></li>
+                    <li><a href="">Contacto</a></li>
+                </ul>
+            </div>
+        </label>
+    </div>
+
+    <div class="head_container">
+        <div class="title">
+            <h1>Web Page Dessign</h1>
+        </div>
+        <div class="options">
+            <button class="menu_button" id="menu_button_id" onclick="show_menu()">Menu</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="wrapper">
+            <div class="wrapper-holder">
+                <div id="slider-1"><h3>slide 1</h3></div>
+                <div id="slider-2"><h3>slide 2</h3></div>
+                <div id="slider-3"><h3>slide 3</h3></div>
+                <div id="slider-4"><h3>slide 4</h3></div>
+            </div>
+        </div>
+        <div class="button-holder">
+            <a href="#slider-1" class="button"></a>
+            <a href="#slider-2" class="button"></a>
+            <a href="#slider-3" class="button"></a>
+            <a href="#slider-4" class="button"></a>
+        </div>
+    </div>
+</body>
+
+<script>
+    function show_menu() {
+        document.getElementById('menu_label').style.display = 'block';
+    }
+
+    function hide_menu() {
+        document.getElementById('menu_label').style.display = 'none';
+    }
+</script>
+
+</html>
