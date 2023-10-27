@@ -1,0 +1,13 @@
+.main_image_container {
+    background-color: rgba(128, 128, 128, 0.252);
+    text-align: center;
+    margin: auto;
+}
+
+
+.test_image {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    display: inline;
+}

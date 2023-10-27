@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/products_layout.css') }}">
     <title>Products</title>
 </head>
 <body>
@@ -10,6 +12,92 @@
     <h1>Products</h1>
 
     <a href="{{ url_for('index') }}">Back to Home</a>
+
+    <table id="tablex">
+        <thead>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th hidden>Image_name</th>
+        </thead>
+        <tbody>
+            {% for x in item %}
+                <tr>
+                    <td class="img_cell">
+                        <img src="/static/css/imgs/{{ x['image'] }}" class="product_img_id">
+                    </td>
+                    <td>{{ x["name"] }}</td>
+                    <td>${{ x["price"] }}</td>
+                    <td>{{ x["status"] }}</td>
+                    <td hidden>{{ x["image"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/gallery" method="post" id="my_form">
+        <div class="gallery_div" id="gallery_div_id" hidden>
+            <input type="text" id="receiver_id" name="receiver">
+        </div>
+    </form>
+
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+        crossorigin="anonymous">
+    </script>
+
+    <!-- DATETABLES -->
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    
+    <script>
+        $(document).ready( function () {
+            $('#tablex').DataTable({
+                language: {
+                    "decimal":        "",
+                    "emptyTable":     "No data available in table",
+                    "info":           "Mostrar _START_ a _END_ de _TOTAL_ productos",
+                    "infoEmpty":      "Mostrar 0 a 0 de 0 productos",
+                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Mostrar _MENU_ productos",
+                    "loadingRecords": "Loading...",
+                    "processing":     "",
+                    "search":         "Buscar:",
+                    "zeroRecords":    "No matching records found",
+                    "paginate": {
+                        "first":      "First",
+                        "last":       "Last",
+                        "next":       "Next",
+                        "previous":   "Previous"
+                    },
+                    "aria": {
+                        "sortAscending":  ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
+                },
+                lengthMenu: [ [2, 3, -1],[2, 3, "All"] ]
+            });
+        } );
+    </script>
+    
+    <!-- GALLERY VIEWER -->
+    <script>
+        var table = document.getElementById('tablex'), rIndex;
+
+        for(var i = 0; i < table.rows.length; i++) 
+        {
+            table.rows[i].onclick = function () 
+            {
+                rIndex = this.rowIndex;
+                document.getElementById('receiver_id').value = this.cells[1].innerHTML;
+
+                document.getElementById('my_form').submit()
+            };
+        }
+    </script>
     
 </body>
 </html>

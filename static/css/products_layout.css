@@ -1,0 +1,13 @@
+body {
+    background-color: white;
+}
+
+.img_cell {
+    width: 300px;
+}
+
+.product_img_id {
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+}

@@ -83,7 +83,7 @@ h1 {
 }
 .menu_button {
     background-color: rgb(0, 145, 255);
-    background-image: url(/static/css/imgs/menu.png);
+    background-image: url(/static/css/index_imgs/menu.png);
     background-size: cover;
     width: 45px;
     height: 45px;
